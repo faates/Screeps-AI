@@ -20,24 +20,25 @@ module.exports = {
                 roleUpgrader.run(creep);
             }
         }
-        //else {
-            
-          //  var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-            //    filter: (s) => s.structureType == (STRUCTURE_CONTAINER 
-              //                                      || STRUCTURE_STORAGE) 
-                //                                    && s.store[RESOURCE_ENERGY] > 0
-            //});
-
         else {
-            var source = creep.pos.findClosestByPath(FIND_SOURCES)
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source)
-            }
+            
+            var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (s) => s.structureType == (STRUCTURE_CONTAINER 
+                                                    || STRUCTURE_STORAGE) 
+                                                    && s.store[RESOURCE_ENERGY] > 0
+            });
+
+        // use this when you dont have containers yet
+        //else {
+            //var source = creep.pos.findClosestByPath(FIND_SOURCES)
+            //if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                //creep.moveTo(source)
+            //}
         
 
-            //if (creep.withdraw(structure, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              //  creep.moveTo(structure)
-            //}
+            if (creep.withdraw(structure, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(structure)
+            }
         }
     }
 };

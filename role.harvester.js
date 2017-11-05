@@ -11,14 +11,14 @@ module.exports = {
         if (creep.memory.working == true) {
             
             var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (s) => ((s.structureType == STRUCTURE_STORAGE
+                filter: (s) => (((s.structureType == STRUCTURE_STORAGE
                                 || s.structureType == STRUCTURE_CONTAINER)
                                 && s.store[RESOURCE_ENERGY] < s.storeCapacity) 
                                 ||
                                 ((s.structureType == STRUCTURE_SPAWN
                                     || s.structureType == STRUCTURE_EXTENSION
                                     || s.structureType == STRUCTURE_TOWER)
-                                && s.energy < s.energyCapacity)
+                                && s.energy < s.energyCapacity))
             });
             
             if (structure != undefined) {
