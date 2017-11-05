@@ -72,11 +72,11 @@ module.exports.loop = function () {
     }
 
     // setup some minimum numbers for different roles
-    var minimumNumberOfHarvesters = 4;
-    var minimumNumberOfHaulers = 2;
-    var minimumNumberOfUpgraders = 3;
-    var minimumNumberOfBuilders = 4;
-    var minimumNumberOfRepairers = 3;
+    var minimumNumberOfHarvesters = 5;
+    var minimumNumberOfHaulers = 3;
+    var minimumNumberOfUpgraders = 2;
+    var minimumNumberOfBuilders = 2;
+    var minimumNumberOfRepairers = 2;
     var minimumNumberOfWallRepairers = 1;
     var minimumNumberOfLongDistanceHarvestersW36S31 = 0;
     var minimumNumberOfLongDistanceHarvestersW38S31 = 0;
@@ -153,7 +153,7 @@ module.exports.loop = function () {
 
     else {
         // else try to spawn a builder
-        name = Game.spawns['HomeSpawn'].createCustomCreep(energy, 'upgrader');
+        name = Game.spawns['HomeSpawn'].createCustomCreep(energy, 'builder');
     }
 
     // print name to console if spawning was a success
