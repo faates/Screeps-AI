@@ -72,19 +72,16 @@ module.exports.loop = function () {
     }
 
     // setup some minimum numbers for different roles
-    var minimumNumberOfHarvesters = 5;
+    var minimumNumberOfHarvesters = 3;
     var minimumNumberOfHaulers = 2;
     var minimumNumberOfUpgraders = 2;
     var minimumNumberOfBuilders = 2;
-    var minimumNumberOfRepairers = 2;
+    var minimumNumberOfRepairers = 1;
     var minimumNumberOfWallRepairers = 1;
-    var minimumNumberOfCreeps = 14;
     var minimumNumberOfLongDistanceHarvestersW36S31 = 0;
     var minimumNumberOfLongDistanceHarvestersW38S31 = 0;
 
     // count the number of creeps alive for each role
-    // _.sum will count the number of properties in Game.creeps filtered by the
-    //  arrow function, which checks for the creep being a specific role
     var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == 'harvester');
     var numberOfHaulers = _.sum(Game.creeps, (c) => c.memory.role == 'hauler');
     var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader');
