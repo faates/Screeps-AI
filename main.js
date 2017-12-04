@@ -72,11 +72,11 @@ module.exports.loop = function () {
     }
 
     // setup some minimum numbers for different roles
-    var minimumNumberOfHarvesters = 3;
+    var minimumNumberOfHarvesters = 2;
     var minimumNumberOfHaulers = 2;
     var minimumNumberOfUpgraders = 2;
     var minimumNumberOfBuilders = 2;
-    var minimumNumberOfRepairers = 1;
+    var minimumNumberOfRepairers = 2;
     var minimumNumberOfWallRepairers = 1;
     var minimumNumberOfLongDistanceHarvestersW36S31 = 0;
     var minimumNumberOfLongDistanceHarvestersW38S31 = 0;
@@ -149,14 +149,14 @@ module.exports.loop = function () {
         //name = Game.spawns['HomeSpawn'].createLongDistanceHarvester(energy, 3, HOME, 'W38S31', 0);
     //}
 
-    //else {
-        // else try to spawn a builder
-        //name = Game.spawns['HomeSpawn'].createCustomCreep(energy, 'builder');
-    //}
+    else {
+        // else try to spawn a harvester
+        name = Game.spawns['HomeSpawn'].createCustomCreep(energy, 'harvester');
+    }
 
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
     if (!(name < 0)) {
-        console.log("Spawning new creep: " + creep.name);
+        console.log("Spawned new creep: " + creep.name + ' the ' + creep.memory.role);
     }
 };
