@@ -8,7 +8,7 @@ var roleRepairer = require('role.repairer');
 var roleWallRepairer = require('role.wallRepairer');
 var roleLongDistanceHarvester = require('role.longDistanceHarvester');
 
-var HOME = 'E21N8';
+var HOME = 'W21S24';
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
@@ -88,10 +88,6 @@ module.exports.loop = function () {
     var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder');
     var numberOfRepairers = _.sum(Game.creeps, (c) => c.memory.role == 'repairer');
     var numberOfWallRepairers = _.sum(Game.creeps, (c) => c.memory.role == 'wallRepairer');
-    var numberOfLongDistanceHarvestersW36S31 = _.sum(Game.creeps, (c) =>
-        c.memory.role == 'longDistanceHarvester' && c.memory.target == 'W36S31');
-    var numberOfLongDistanceHarvestersW38S31 = _.sum(Game.creeps, (c) =>
-        c.memory.role == 'longDistanceHarvester' && c.memory.target == 'W38S31');
 
     var energy = Game.spawns['HomeSpawn'].room.energyCapacityAvailable;
     var name = undefined;
@@ -137,17 +133,6 @@ module.exports.loop = function () {
         // try to spawn one
         name = Game.spawns['HomeSpawn'].createCustomCreep(energy, 'wallRepairer');
     }
-
-    // if not enough longDistanceHarvesters for W3N5
-    //else if (numberOfLongDistanceHarvestersW36S31 < minimumNumberOfLongDistanceHarvestersW36S31) {
-        // try to spawn one
-        //name = Game.spawns['HomeSpawn'].createLongDistanceHarvester(energy, 5, HOME, 'W36S31', 0);
-    //}
-    // if not enough longDistanceHarvesters for W2N4
-    //else if (numberOfLongDistanceHarvestersW38S31 < minimumNumberOfLongDistanceHarvestersW38S31) {
-        // try to spawn one
-        //name = Game.spawns['HomeSpawn'].createLongDistanceHarvester(energy, 3, HOME, 'W38S31', 0);
-    //}
 
     else {
         // else try to spawn a harvester
