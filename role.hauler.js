@@ -9,17 +9,27 @@ module.exports = {
         }
         
         if (creep.memory.working == true) {
+
+            var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES, {
+              filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
+              if (dropenergy){
+                if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
+                  creep.moveTo(dropenergy)
+                }
+              }
             
-            var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (s) => (s.structureType == STRUCTURE_SPAWN 
-                                || s.structureType == STRUCTURE_EXTENSION 
-                                || s.structureType == STRUCTURE_TOWER)
-                                && s.energy < s.energyCapacity
-            });
+            else {
+              var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                  filter: (s) => (s.structureType == STRUCTURE_SPAWN 
+                                  || s.structureType == STRUCTURE_EXTENSION 
+                                  || s.structureType == STRUCTURE_TOWER)
+                                  && s.energy < s.energyCapacity
+                                });
+                              }
             
-            if (structure != undefined) {
-                if (creep.transfer(structure, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(structure);
+                  if (structure != undefined) {
+                    if (creep.transfer(structure, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                      creep.moveTo(structure);
                 }
             }
         }
